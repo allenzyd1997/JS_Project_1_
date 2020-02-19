@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Picture Training</title>
+
+
+	<style type="text/css">
+		*{
+			margin : 0px;
+			padding: 0px;
+		}
+
+		#outer{
+			width: 500px;
+			margin-left: 450px;
+			margin-top: 200px;
+			padding: 10px;
+			background-color: yellow; 
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		
+
+		window.onload = function(){
+
+
+		pics = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg", "./img/4.jpg"] ;
+
+		var index = 0; 
+
+		var prev = document.getElementById("prev");
+		var next = document.getElementById("next");
+
+		var src = document.getElementsByTagName("img")[0];
+		var info = document.getElementById("info");
+		info.innerHTML = "当前共"+pics.length+"张图片，现在正在看第"+(index+1)+"张图片";
+
+		function prevF(){
+			index--; 
+			if(index<0){
+				index = pics.length - 1 ;
+			}
+			src.src = pics[index];
+
+			info.innerHTML = "当前共"+pics.length+"张图片，现在正在看第"+(index+1)+"张图片";
+
+
+		}
+
+		function nextF(){
+			index++;
+			if(index>=pics.length){
+				index = 0;
+			}
+			src.src = pics[index];
+
+			info.innerHTML = "当前共"+pics.length+"张图片，现在正在看第"+(index+1)+"张图片";
+		}
+
+	
+
+
+		prev.onclick = prevF; 
+		next.onclick = nextF; 
+
+		
+		}
+	</script>
+
+
+</head>
+<body>
+
+	<div id="outer">
+		
+		<p id = "info"></p>
+
+		<img src="./img/1.jpg" />
+
+		<button id="prev">前一张</button>
+		<button id="next">后一张</button>
+
+	</div>
+
+	
+</body>
+</html>

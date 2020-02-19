@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>全选练习</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#outer{
+			width: 500px;
+			margin-left: 300px;
+			margin-top: 300px;
+			padding: 20px;
+			background-color: yellow;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+
+
+	<div id="outer">
+		<div id="choice"> 
+			<!-- 表格中显示的是所以可供选择的水果 -->
+			<form>
+			</form>
+		</div>
+		
+		<div id="btn"> 
+			<!-- 四个按钮分别是全选，反选，全不选，提交 -->
+			<button id = "allSel">
+				全选
+			</button>
+			<button id = "reverse">
+				反选
+			</button>
+			<button id = "allNotSel">
+				全不选
+			</button>
+			<button id = "submit">
+				提交
+			</button>
+		</div>
+
+	</div>
+<script type="text/javascript">
+	// 水果的数组
+	var fruits = ["苹果","香蕉","栗子","樱桃"];
+	// 将水果加入表单
+	formF = document.getElementById("choice").getElementsByTagName("form")[0];
+	for(var i=0; i<fruits.length; i++){
+		formF.innerHTML += "<label><input name='Fruit' type='checkbox'/>" + fruits[i]+ "</label>";
+		formF.innerHTML += "\n";
+	}
+
+
+
+	// 实现四个按钮功能
+	// 所有的选中的标签
+	var cbxs = formF.getElementsByTagName("input");
+	// 选中所有的按钮
+	// 1. 全选所有
+	btn1 = document.getElementById("allSel");
+
+	btn1.onclick = function(){
+		// 获得所有的选中单位的集合。 
+		for(var i = 0; i < cbxs.length; i++){
+			cbxs[i].checked = true;
+		}
+
+	};
+
+	// 2. 反旋所有
+	btn2 = document.getElementById("reverse");
+
+	btn2.onclick = function(){
+		for(var i = 0; i < cbxs.length; i++){
+			cbxs[i].checked = !cbxs[i].checked;
+		}
+	};
+
+	// 3. 全不选
+	btn3 = document.getElementById("allNotSel");
+
+	btn3.onclick = function(){
+		for(var i = 0; i < cbxs.length; i++){
+			cbxs[i].checked = false;
+		}
+	};
+
+	// 4. 提交， 打印输出所有选择的水果
+	btn4 = document.getElementById("submit");
+
+	btn4.onclick = function(){
+		for(var i = 0; i < cbxs.length; i++){
+			if (cbxs[i].checked == true){
+				alert(cbxs[i].nextSibling.nodeVsalue);
+			}
+		}
+	};
+
+
+
+</script>
+
+
+</body>
+</html>

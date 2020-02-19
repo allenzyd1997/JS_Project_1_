@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>增删改练习</title>
+
+	<style type="text/css">
+		#system{
+			width: 500px;
+			margin-top: 250px;
+			margin-left: 300px;
+		}
+
+		input{
+			width: 200px;
+			text-align: center;
+		}
+		th{
+			width: 60px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="system">
+	<div id="empyTableDiv">
+		<table id="employeeTable" border="1">
+			<tr>
+				<th>
+					Name 
+				</th>
+				<th>
+					Email
+				</th>
+				<th>
+					Salary
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</table>		
+	</div>
+
+	<div>
+		<h4><b>添加新员工</b></h4>
+
+		<table id='addEmployee' border="2">
+			<tr>
+				<td class="word">Name:</td>
+				<td> <input type="text" name=""></td>
+			</tr>
+			<tr>
+				<td class="email">Email:</td>
+				<td> <input type="text" name=""></td>
+			</tr>
+			<tr>
+				<td class="salary">Salary:</td>
+				<td> <input type="text" name=""></td>
+			</tr>
+			<tr>
+
+				<td> <button id="submit"> SUBMIT </button></td>
+			</tr>
+		</table>
+	</div>		
+	</div>
+
+<script type="text/javascript">
+
+	// 创建一个员工类
+
+
+	var subbtn = document.getElementById("submit");
+
+	//定义一个删除整行信息的方法
+	function deleteNode(){
+		//功能： 触发此方法时，删除一整行信息数据
+		grandFather = event.srcElement.parentNode.parentNode;
+		grandFather.parentNode.removeChild(grandFather);
+	}
+
+
+
+	subbtn.onclick = function(){
+		// 获得一个所有输入的数组
+		var inputContents = document.getElementsByTagName("input");
+		// 将得到的数据转换到员工类中封装
+		emp = [inputContents[0].value, inputContents[1].value, inputContents[2].value];
+
+
+		// 拿到第一个table
+		var table1 = document.getElementById("employeeTable");
+		var tr = document.createElement("tr");
+
+		
+		// 根据这个员工信息组装一个新的信息行
+		for (var i = 0 ; i < emp.length; i++){
+			var th = document.createElement("th");					
+			var textN = document.createTextNode(emp[i]);
+			th.appendChild(textN);
+			tr.appendChild(th);
+		}
+		//最后增加一个delete进行删除当前行的数据
+
+		var th 	= document.createElement("th");	
+		var a 	= document.createElement("a");
+
+		//创建<a>delete</a>
+		a.innerHTML = "Delete";
+		a.href = "javascript:0";
+		a.onclick = deleteNode;
+
+		th.appendChild(a);
+		tr.appendChild(th);
+		table1.appendChild(tr);
+	}
+
+
+
+</script>
+
+</body>
+</html>
