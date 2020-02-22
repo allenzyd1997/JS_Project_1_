@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MOUSE DRAGE</title>
+
+	<style type="text/css">
+		*{
+		}
+		#outer{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+
+
+		}
+		p{
+				padding-top: 35px;
+				padding-left: 20px;
+				color: purple;
+			}
+	</style>
+
+	<script type="text/javascript">
+		
+		window.onload = function(){
+
+			var selected = false;
+
+			function onMouseDown(){
+				//按下鼠标的时候选中这个div
+				selected = true; 
+				console.log(selected);
+			}
+			function onMouseMove(event){
+				//在鼠标确认选中的时候，移动鼠标的时候，div跟随鼠标进行移动。
+
+				//解决兼容性问题;
+				event = event||window.event;
+
+				if(selected){
+					// clientX, clientY, x, y
+					// console.log(event.x);
+					// console.log(event.y);
+					console.log(divM.style.left);
+					console.log(divM.style.top);
+
+					divM.style.left = event.clientX+"px"; 
+					divM.style.top = event.clientY+"px";
+				}
+			}
+			function onMouseUp(){
+				//松开鼠标的时候不选中这个div
+				selected = false;
+				console.log(selected);
+			}
+
+			divM = document.getElementById("outer");
+
+
+			divM.onmousedown = onMouseDown;
+			document.onmousemove = onMouseMove;
+			divM.onmouseup = onMouseUp;
+		
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id = "outer">
+		<p> 点击拖拽 </p>
+	</div>
+
+</body>
+</html>
