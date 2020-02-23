@@ -57,37 +57,37 @@
 				diff_t = event.clientY - parseInt((init_t.slice(0, -2)));				
 				selected = true; 
 				
-			}
-			function onMouseMove(event){
-				//在鼠标确认选中的时候，移动鼠标的时候，div跟随鼠标进行移动。
+			
+				function onMouseMove(event){
+					//在鼠标确认选中的时候，移动鼠标的时候，div跟随鼠标进行移动。
 
-				//解决兼容性问题;
-				event = event||window.event;
+					//解决兼容性问题;
+					event = event||window.event;
 
-				if(selected){
-					// clientX, clientY, x, y
+					if(selected){
+						// clientX, clientY, x, y
 
-					//获得
+						//获得
 
-									
-					divM.style.left = event.clientX - diff_l +"px"; 
-					divM.style.top = event.clientY - diff_t +"px";
+										
+						divM.style.left = event.clientX - diff_l +"px"; 
+						divM.style.top = event.clientY - diff_t +"px";
 
-					divM.style.backgroundColor = colorChangeBasePos(event.clientX, event.clientY);
+						divM.style.backgroundColor = colorChangeBasePos(event.clientX, event.clientY);
 
+					}
 				}
-			}
-			function onMouseUp(){
-				//松开鼠标的时候不选中这个div
-				selected = false;
+				function onMouseUp(){
+					//松开鼠标的时候不选中这个div
+					selected = false;
+				}
+				document.onmousemove = onMouseMove;
+				document.onmouseup = onMouseUp;				
 			}
 
 			divM = document.getElementById("outer");
-
-
 			divM.onmousedown = onMouseDown;
-			document.onmousemove = onMouseMove;
-			document.onmouseup = onMouseUp;
+
 		
 
 
