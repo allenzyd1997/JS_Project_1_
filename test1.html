@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TEST </title>
+
+	<style type="text/css">
+		*{
+			margin : 0;
+			padding: 0;
+
+		}
+		#square{
+			width: 30px;
+			height: 30px;
+			background-color: black;
+			
+			position: absolute;
+			left: 100px;
+			top: 50px;
+
+		}
+		#line{
+			width: 1px;
+			border: 1px;
+			height: 1000px;
+			left: 300px;
+			position: absolute;
+			background-color: black; 
+
+		}
+
+		#square2{
+			width: 30px;
+			height: 30px;
+			background-color: red;
+			
+			position: absolute;
+			left: 100px;
+			top: 100px;		
+		}
+	</style>
+	<script type="text/javascript" src="./tools.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			div1 = document.getElementById("square");
+			div2 = document.getElementById("square2");
+			line = document.getElementById("line");
+			btn01 = document.getElementById("btn01");
+			btn02 = document.getElementById("btn02");
+			btn03 = document.getElementById("btn03");
+
+
+			btn01.onclick = function(){move(div1, "left", 13, 30, 300);};
+			btn02.onclick = function(){move(div1, "left", 13, 30, 0);};
+			btn03.onclick = function(){move(div2, "left", 13, 30, 300);};
+			btn04.onclick = function(){move(div2, "left", 13, 30, 0);};			
+		}
+	</script>
+</head>
+<body>
+
+<div id="square"></div>
+<div id="square2"></div>
+<div id="line"></div>
+<button id="btn01">11111</button>
+<button id="btn02">22222</button>
+<button id="btn03">33333</button>
+<button id="btn04">44444</button>
+</body>
+</html>

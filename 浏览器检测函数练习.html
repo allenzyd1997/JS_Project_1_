@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>浏览器检测</title>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var ua = navigator.userAgent;
+
+			console.log(ua);
+
+			if(/firefox/i.test(ua)){
+				alert("你是火狐");
+			}else if (/chrome/i.test(ua)){
+				alert("你是Chrome");
+			}else{
+				alert("未知");
+			}
+		}
+	</script>
+</head>
+
+
+
+<body>
+
+<p>检测浏览器</p>
+
+</body>
+</html>

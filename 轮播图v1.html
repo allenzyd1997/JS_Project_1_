@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lun bo tu</title>
+
+
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#outer{
+
+			width: 520px;
+			height: 350px;
+
+			margin: 50px auto;
+
+			padding: 10px 0;
+			background-color: greenyellow; 
+			position: relative;
+
+
+			overflow: hidden;
+		}
+
+		#imgList{
+
+			list-style: none;
+
+			position: absolute;
+
+		}
+
+		#imgList li{
+			padding-left: 10px;	
+			padding-right: 10px;
+			float: left;
+		}
+
+		#navDiv{
+			position: absolute;
+			/*set position*/
+			bottom: 15px;
+		}
+
+		#navDiv a{
+			display: block;
+			width: 10px;
+			height: 10px;
+			background-color: red;
+			float : left;
+			margin: 0 3px;
+
+			/*opacity: */
+			opacity: 0.5;
+
+			/*compat IE8*/
+			filter:alpha(opacity=50);
+
+			/*pos: center;*/
+			/*setting left value*/
+
+
+
+
+		}
+
+		/*set the hover style of the mouse*/
+		#navDiv a:hover{
+			background-color: white;
+		}
+	</style>
+	<script type="text/javascript" src="./tools.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var imgList = document.getElementById("imgList");
+
+			var imgArr = document.getElementsByTagName("img");
+
+			var baseUnit = 520; 
+
+			imgList.style.width = baseUnit*imgArr.length+"px";
+			var btn01 = document.getElementById("btn01")
+			btn01.onclick = function(){
+				alert("Hello");
+			}
+
+			// setting the nav position in the center
+			var navDiv = document.getElementById("navDiv");
+			var outer = document.getElementById("outer");
+
+			navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+
+
+			// get the index of the pictures
+			var index = 0; 
+
+			// get all the a tags
+			var allA = document.getElementsByTagName("a");
+			
+			function setA(num){
+				for(var i=0; i <allA.length; i++){
+					allA[i].style.backgroundColor = "";
+				}
+				allA[num].style.backgroundColor = "white";
+			}
+			// click the hyperlink swithcing to the certain pictures
+
+			// binding the onclick respond function to all the a 
+			for(var i=0; i <allA.length; i++){
+
+				allA[i].num = i; 
+				allA[i].onclick = function(){
+					// setting the index based on the num property of the little squre
+					index = this.num; 
+
+					// switch the img
+
+					move(imgList, "left", 40, 30, baseUnit * (-1) * index);
+
+					setA(index);
+
+				};
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div id="outer">
+
+		<ul id="imgList">
+			<li><img src="./img/1.jpg"></li>
+			<li><img src="./img/3.jpg"></li>
+			<li><img src="./img/2.jpg"></li>
+			<li><img src="./img/4.jpg"></li>
+		</ul>
+
+		<div id="navDiv">
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+
+		</div>
+	</div>
+	<div id="btnBox">
+		<button id="btn01">  start </button>
+	</div>
+</body>
+
+</html>

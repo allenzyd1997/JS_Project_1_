@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Picture Training</title>
+
+
+	<style type="text/css">
+		*{
+			margin : 0px;
+			padding: 0px;
+		}
+
+		#outer{
+			width: 500px;
+			margin-left: 450px;
+			margin-top: 200px;
+			padding: 10px;
+			background-color: #ffc5e0; 
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+		
+
+		window.onload = function(){
+
+
+		pics = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg", "./img/4.jpg"] ;
+
+		var index = 0; 
+		var timer = 0; 
+
+		var start = document.getElementById("start");
+		var stop = document.getElementById("stop");
+
+		var src = document.getElementsByTagName("img")[0];
+		var info = document.getElementById("info");
+		info.innerHTML = "当前共"+pics.length+"张图片，现在正在看第"+(index+1)+"张图片";
+
+		function startF(){
+
+			clearInterval(timer);
+			timer = setInterval(function(){
+				index++; 
+				if(index>=pics.length){
+					index = 0;
+				}
+				src.src = pics[index];
+
+				info.innerHTML = "当前共"+pics.length+"张图片，现在正在看第"+(index+1)+"张图片";
+				
+			}, 1000);
+
+
+		}
+
+		function stopF(){
+			clearInterval(timer);
+		}
+
+	
+
+
+		start.onclick = startF; 
+		stop.onclick = stopF; 
+
+		
+		}
+	</script>
+
+
+</head>
+<body>
+
+	<div id="outer">
+		
+		<p id = "info"></p>
+
+		<img src="./img/1.jpg" />
+
+		<button id="start">开始</button>
+		<button id="stop">停止</button>
+
+	</div>
+
+	
+</body>
+</html>
